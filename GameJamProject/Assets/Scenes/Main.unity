@@ -195,6 +195,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 3.000002
       objectReference: {fileID: 0}
+    - target: {fileID: 6478517225966379856, guid: 5e19c4571788b184696293c706372505,
+        type: 3}
+      propertyPath: intendedDirection
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e19c4571788b184696293c706372505, type: 3}
 --- !u!1001 &39604669
@@ -1143,6 +1148,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6478517225966379856, guid: 5e19c4571788b184696293c706372505,
+        type: 3}
+      propertyPath: isVertical
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478517225966379856, guid: 5e19c4571788b184696293c706372505,
+        type: 3}
+      propertyPath: intendedDirection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e19c4571788b184696293c706372505, type: 3}
 --- !u!1001 &535703629
@@ -1962,6 +1977,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 3.000002
       objectReference: {fileID: 0}
+    - target: {fileID: 6478517225966379856, guid: 5e19c4571788b184696293c706372505,
+        type: 3}
+      propertyPath: intendedDirection
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e19c4571788b184696293c706372505, type: 3}
 --- !u!4 &845007782 stripped
@@ -2291,6 +2311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478517225966379856, guid: 5e19c4571788b184696293c706372505,
+        type: 3}
+      propertyPath: intendedDirection
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e19c4571788b184696293c706372505, type: 3}
@@ -4056,6 +4081,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6478517225966379856, guid: 5e19c4571788b184696293c706372505,
+        type: 3}
+      propertyPath: isVertical
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478517225966379856, guid: 5e19c4571788b184696293c706372505,
+        type: 3}
+      propertyPath: intendedDirection
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e19c4571788b184696293c706372505, type: 3}
 --- !u!1001 &1968464349
@@ -4134,6 +4169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478517225966379856, guid: 5e19c4571788b184696293c706372505,
+        type: 3}
+      propertyPath: intendedDirection
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e19c4571788b184696293c706372505, type: 3}
@@ -4505,6 +4545,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1777803313924002630, guid: dbaef531734353f4ea309b01e93e59e9,
+        type: 3}
+      propertyPath: intendedDirection
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbaef531734353f4ea309b01e93e59e9, type: 3}
 --- !u!1001 &3784539005279078679
@@ -4652,6 +4697,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478517225966379856, guid: 5e19c4571788b184696293c706372505,
+        type: 3}
+      propertyPath: intendedDirection
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e19c4571788b184696293c706372505, type: 3}
