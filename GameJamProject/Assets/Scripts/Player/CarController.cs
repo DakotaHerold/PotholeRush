@@ -26,7 +26,11 @@ namespace Jam
 
         private bool bouncing = false;
 
-        private float bounceForce; 
+        public float baseBounceForce; 
+        private float bounceForce;
+
+        public float bounceTime; 
+        private float bounceTimer; 
 
         void Start()
         {
@@ -47,13 +51,20 @@ namespace Jam
 
         private void UpdateCarMovement()
         {
+          
+
             Vector2 speed = transform.up * (InputHandler.Instance.VerticalAxis * acceleration);
             speed *= Time.fixedDeltaTime;
-            Vector3 newSpeed = new Vector3(speed.x, speed.y, 0.0f); 
+            Vector3 newSpeed = new Vector3(speed.x, speed.y, 0.0f);
             //rb.AddForce(speed);
-            velocity += newSpeed; 
-            
 
+            if (!bouncing)
+                velocity += newSpeed;
+            else 
+                velocity -= newSpeed * baseBounceForce; 
+            
+            
+            
 
 
             rotation = -InputHandler.Instance.HorizontalAxis;
@@ -91,10 +102,18 @@ namespace Jam
 
             if (bouncing)
             {
-                velocity *= (-1f * bounceForce * Time.fixedDeltaTime);
-                // Reset 
-                bouncing = false;
-                bounceForce = 1f; 
+                bounceTimer += Time.fixedDeltaTime; 
+
+                if(bounceTimer >= bounceTime)
+                {
+                    // Reset 
+                    bouncing = false;
+                    bounceForce = baseBounceForce;
+                    bounceTimer = 0.0f;
+                    velocity = Vector3.zero; 
+                }
+                
+
             }
 
             
@@ -121,7 +140,6 @@ namespace Jam
             }
 
             bouncing = true;
-            bounceForce = 500f; 
         }
 
     }
