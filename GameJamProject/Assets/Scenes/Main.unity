@@ -319,7 +319,8 @@ MonoBehaviour:
   steering: 100
   stationaryTurnSpeed: 3
   turnControl: 7
-  bounceForce: 200
+  baseBounceForce: 2
+  bounceTime: 0.25
 --- !u!143 &108201868
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3985,6 +3986,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980274739525151779, guid: 77ba2068e1c935b43946ff655ee48681,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2139884585516399766, guid: 77ba2068e1c935b43946ff655ee48681,
         type: 3}
