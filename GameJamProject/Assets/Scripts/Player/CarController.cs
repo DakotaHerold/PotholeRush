@@ -17,17 +17,27 @@ namespace Jam
         private CharacterController controller; 
 
         private Vector3 velocity;
+        private Vector3 collisionForce; 
         private float angularChange;  
         private Vector3 force = new Vector3(1,0,0);
         private float rotation;
 
-        private float currentAcceleration; 
+        private float currentAcceleration;
+
+        private bool bouncing = false;
+
+        private float bounceForce; 
 
         void Start()
         {
             controller = GetComponent<CharacterController>();
            // rb = GetComponent<Rigidbody>(); 
             rotation = 0.0f; 
+        }
+
+        private void Update()
+        {
+            collisionForce = Vector3.zero;
         }
 
         void FixedUpdate()
@@ -43,6 +53,8 @@ namespace Jam
             //rb.AddForce(speed);
             velocity += newSpeed; 
             
+
+
 
             rotation = -InputHandler.Instance.HorizontalAxis;
             if (velocity.magnitude > 0)
@@ -74,16 +86,43 @@ namespace Jam
             float driftForce = Vector3.Dot(velocity, transform.right);
             Vector3 relativeForce = (rightAngleFromForward.normalized * -1.0f) * (driftForce * 10.0f);
 
-            velocity += relativeForce; 
+            velocity += relativeForce;
+
+
+            if (bouncing)
+            {
+                velocity *= (-1f * bounceForce * Time.fixedDeltaTime);
+                // Reset 
+                bouncing = false;
+                bounceForce = 1f; 
+            }
 
             
             controller.Move(velocity);
-            velocity = Vector3.zero; 
+            velocity = Vector3.zero;
+
+
         }
 
-        private void OnCollisionEnter(Collision collision)
+
+        void OnControllerColliderHit(ControllerColliderHit hit)
         {
+            Rigidbody body = hit.collider.attachedRigidbody;
 
+            // no rigidbody
+            if (body == null)
+            {
+                return;
+            }
+
+            if (!hit.gameObject.CompareTag("Barrier"))
+            {
+                return; 
+            }
+
+            bouncing = true;
+            bounceForce = 500f; 
         }
+
     }
 }
