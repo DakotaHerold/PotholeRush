@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Jam
 {
-    public class CarController : MonoBehaviour
+    public class CarController : JamObject
     {
         public float acceleration;
         public float steering;
@@ -29,25 +29,42 @@ namespace Jam
         public float baseBounceForce; 
 
         public float bounceTime; 
-        private float bounceTimer; 
+        private float bounceTimer;
 
-        
 
-        void Start()
+        private float bestLapTime; 
+        private float lapTime;
+        private int currentLap;
+
+        private bool isLapActive;
+
+        private List<Checkpoint> checkpoints;
+
+        [Header("Game Properties")]
+        public int NumCheckPoints; 
+
+        protected override void Start()
         {
+            base.Start();
+            bestLapTime = float.MaxValue; 
+            checkpoints = new List<Checkpoint>(); 
             controller = GetComponent<CharacterController>();
            // rb = GetComponent<Rigidbody>(); 
-            rotation = 0.0f; 
+            rotation = 0.0f;
+
+            // TODO: Update if there's a countdown
+            StartLap();
         }
 
-        private void Update()
+        protected override void Update()
         {
-            collisionForce = Vector3.zero;
+            base.Update();
+            UpdateLap();
         }
 
         void FixedUpdate()
         {
-            UpdateCarMovement(); 
+            UpdateCarMovement();
         }
 
         private void UpdateCarMovement()
@@ -115,14 +132,65 @@ namespace Jam
                 
 
             }
-
             
             controller.Move(velocity);
             velocity = Vector3.zero;
-
-
         }
 
+        private void UpdateLap()
+        {
+            if (!isLapActive)
+                return;
+
+            lapTime += Time.deltaTime; 
+        }
+
+        public void StartLap()
+        {
+            isLapActive = true;
+            lapTime = 0.0f;
+
+            checkpoints.Clear(); 
+        }
+
+        public void LapComplete()
+        {
+            // Set best lap time
+            if (lapTime < bestLapTime)
+            {
+                bestLapTime = lapTime;
+                Debug.Log("New Best Time: " + bestLapTime);
+            }
+
+            Debug.Log("Lap Time: " + lapTime);
+
+
+            // Update lap count
+            currentLap++; 
+
+            isLapActive = false;
+
+            // TODO Check any game over state needed here 
+            // TODO: Upgrade car 
+
+            StartLap(); 
+        }
+
+        public void AddCheckpoint(Checkpoint newCheckpoint)
+        {
+            if (!newCheckpoint.isFinishLine)
+            {
+                if (checkpoints.Contains(newCheckpoint))
+                    return;
+            }
+
+            checkpoints.Add(newCheckpoint); 
+
+            if(checkpoints.Count >= NumCheckPoints && newCheckpoint.isFinishLine)
+            {
+                LapComplete(); 
+            }
+        }
 
         void OnControllerColliderHit(ControllerColliderHit hit)
         {
@@ -133,17 +201,6 @@ namespace Jam
             {
                 return;
             }
-
-            //if(hit.gameObject.CompareTag("Wall"))
-            //{
-            //    Debug.DrawRay(hit.point, hit.normal, Color.green, 0.3f); // draw green normal
-            //    Debug.DrawRay(hit.point, -velocity, Color.red, 0.3f); // draw red "in" velocity
-            //    velocity = Vector3.Reflect(velocity, hit.normal); // reflect the velocity
-            //    velocity *= 5f * Time.fixedDeltaTime; 
-            //    controller.Move(velocity); 
-            //    Debug.DrawRay(hit.point, velocity, Color.blue, 0.3f); // draw blue "out" velocity
-            //    return; 
-            //}
 
             if (!hit.gameObject.CompareTag("Barrier"))
             {
