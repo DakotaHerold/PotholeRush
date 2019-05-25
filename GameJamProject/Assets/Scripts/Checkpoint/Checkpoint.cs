@@ -8,13 +8,17 @@ namespace Jam
     {
         public enum Direction
         {
+            NONE, 
             TOP, 
             RIGHT, 
             BOTTOM,
             LEFT
         }
 
-        public bool isFinishLine; 
+        public bool isFinishLine;
+        public bool isVertical;
+
+        public Direction intendedDirection; 
 
         private void Awake()
         {
@@ -26,70 +30,91 @@ namespace Jam
 
             if (other.gameObject.CompareTag("Player"))
             {
+                
                 CarController controller = other.gameObject.GetComponent<CarController>();
 
                 if (controller != null)
                 {
+
                     Vector3 direction = other.transform.position - transform.position;
 
-                    Debug.DrawLine(transform.position, other.transform.position, Color.blue, 2f);
+                    //Vector3 direction = transform.position - other.transform.position; 
 
+                    //Debug.DrawLine(transform.position, other.transform.position, Color.blue, 2f);
 
+                    // Raycast
+                    RaycastHit hit;
 
-                    Vector3 localPoint = other.transform.InverseTransformPoint(transform.position);
-                    Vector3 localDir = localPoint.normalized;
-                    float upDot = Vector3.Dot(localDir, Vector3.up);
-                    float rightDot = Vector3.Dot(localDir, Vector3.right);
-
-                    float upPower = Mathf.Abs(upDot);
-                    float rightPower = Mathf.Abs(rightDot);
-
-                    // Determine furthest 
-                    if(upPower > rightPower )
+                    if (Physics.Raycast(transform.position, direction, out hit, Mathf.Infinity, LayerMask.NameToLayer("Player")))
                     {
-                        if(upDot < 0)
+                        Debug.DrawRay(transform.position, direction * hit.distance, Color.yellow, 2f);
+
+
+                       
+
+
+                        Vector3 localPoint = hit.transform.InverseTransformPoint(hit.point); 
+                        Vector3 localDir = localPoint.normalized;
+                        float upDot = Vector3.Dot(localDir, Vector3.up);
+                        float rightDot = Vector3.Dot(localDir, Vector3.right);
+
+                        //float upPower = Mathf.Abs(upDot);
+                        //float rightPower = Mathf.Abs(rightDot);
+
+                        Direction currentDirection = Direction.NONE;
+
+                        // Determine furthest 
+                        if (isVertical)
                         {
-                            // Down
-                            Debug.Log("Down");
+                            if (upDot < 0)
+                            {
+                                // Down
+                                //Debug.Log("Down");
+                                currentDirection = Direction.BOTTOM; 
+                            }
+                            else if (upDot > 0)
+                            {
+                                // Up 
+                                currentDirection = Direction.TOP;
+                                //Debug.Log("Up");
+                            }
+                            else
+                            {
+                                currentDirection = intendedDirection;
+                            }
+                            Debug.Log(upDot); 
                         }
-                        else if (upDot > 0)
+                        else 
                         {
-                            // Up 
-                            Debug.Log("Up"); 
+                            // NOTE: Left and right are flipped because it's entry direction
+                            if (rightDot < 0)
+                            {
+                                // Left
+                                //Debug.Log("Left");
+                                currentDirection = Direction.RIGHT; 
+                            }
+                            else if (rightDot > 0)
+                            {
+                                // Right 
+                                //Debug.Log("Right");
+                                currentDirection = Direction.LEFT; 
+                            }
+                            else
+                            {
+                                currentDirection = intendedDirection;
+                            }
+                            Debug.Log(rightDot); 
                         }
-                        else
-                        {
-                            // Equal 
-                        }
+
+
+
+                        controller.AddCheckpoint(this, currentDirection);
+
                     }
-                    else if(rightPower > upPower)
-                    {
-                        if (rightDot < 0)
-                        {
-                            // Left
-                            Debug.Log("Left");
-                        }
-                        else if (rightDot > 0)
-                        {
-                            // Right 
-                            Debug.Log("Right");
-                        }
-                        else
-                        {
-                            // Equal 
-                        }
-                    }
-
-
-
-                    controller.AddCheckpoint(this);
                 }
             }
         }
 
-        private void OnTriggerEnter(Collision collision)
-        {
-            
-        }
+        
     }
 }

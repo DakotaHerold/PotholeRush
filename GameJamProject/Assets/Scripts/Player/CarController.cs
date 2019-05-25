@@ -176,7 +176,7 @@ namespace Jam
             StartLap(); 
         }
 
-        public void AddCheckpoint(Checkpoint newCheckpoint)
+        public void AddCheckpoint(Checkpoint newCheckpoint, Checkpoint.Direction direction)
         {
             if (!newCheckpoint.isFinishLine)
             {
@@ -184,6 +184,7 @@ namespace Jam
                     return;
             }
 
+            Debug.Log("Direction: " + direction.ToString()); 
             checkpoints.Add(newCheckpoint); 
 
             if(checkpoints.Count >= NumCheckPoints && newCheckpoint.isFinishLine)
