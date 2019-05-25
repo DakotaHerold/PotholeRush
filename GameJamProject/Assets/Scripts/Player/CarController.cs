@@ -27,10 +27,11 @@ namespace Jam
         private bool bouncing = false;
 
         public float baseBounceForce; 
-        private float bounceForce;
 
         public float bounceTime; 
         private float bounceTimer; 
+
+        
 
         void Start()
         {
@@ -108,7 +109,6 @@ namespace Jam
                 {
                     // Reset 
                     bouncing = false;
-                    bounceForce = baseBounceForce;
                     bounceTimer = 0.0f;
                     velocity = Vector3.zero; 
                 }
@@ -133,6 +133,17 @@ namespace Jam
             {
                 return;
             }
+
+            //if(hit.gameObject.CompareTag("Wall"))
+            //{
+            //    Debug.DrawRay(hit.point, hit.normal, Color.green, 0.3f); // draw green normal
+            //    Debug.DrawRay(hit.point, -velocity, Color.red, 0.3f); // draw red "in" velocity
+            //    velocity = Vector3.Reflect(velocity, hit.normal); // reflect the velocity
+            //    velocity *= 5f * Time.fixedDeltaTime; 
+            //    controller.Move(velocity); 
+            //    Debug.DrawRay(hit.point, velocity, Color.blue, 0.3f); // draw blue "out" velocity
+            //    return; 
+            //}
 
             if (!hit.gameObject.CompareTag("Barrier"))
             {
