@@ -8,9 +8,16 @@ namespace Jam
     {
         public float acceleration;
         public float steering;
-        private Rigidbody2D rb;
+        public float stationaryTurnSpeed;
+        [Space(10)]
+        public float turnControl; 
+  
+
+
+        private CharacterController controller; 
 
         private Vector3 velocity;
+        private float angularChange;  
         private Vector3 force = new Vector3(1,0,0);
         private float rotation;
 
@@ -18,7 +25,8 @@ namespace Jam
 
         void Start()
         {
-            rb = GetComponent<Rigidbody2D>();
+            controller = GetComponent<CharacterController>();
+           // rb = GetComponent<Rigidbody>(); 
             rotation = 0.0f; 
         }
 
@@ -30,22 +38,27 @@ namespace Jam
         private void UpdateCarMovement()
         {
             Vector2 speed = transform.up * (InputHandler.Instance.VerticalAxis * acceleration);
+            speed *= Time.fixedDeltaTime;
+            Vector3 newSpeed = new Vector3(speed.x, speed.y, 0.0f); 
             //rb.AddForce(speed);
-            rb.velocity += speed * Time.fixedDeltaTime; 
+            velocity += newSpeed; 
+            
 
-            float direction = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.up));
-            if (direction >= 0.0f)
-            {
-                rb.rotation += -InputHandler.Instance.HorizontalAxis * steering * (rb.velocity.magnitude / 5.0f);
-            }
+            rotation = -InputHandler.Instance.HorizontalAxis;
+            if (velocity.magnitude > 0)
+                rotation *= steering * (velocity.magnitude / turnControl);
             else
-            {
-                rb.rotation -= -InputHandler.Instance.HorizontalAxis * steering * (rb.velocity.magnitude / 5.0f);
-            }
+                rotation *= stationaryTurnSpeed;
 
-            Vector2 forward = new Vector2(0.0f, 0.5f);
+            //rotation = Mathf.Clamp(rotation, -maxTurnAngle, maxTurnAngle);
+            //Debug.Log(rotation); 
+
+            transform.Rotate(0, 0, rotation);
+
+
+            Vector3 forward = new Vector3(0.0f, 0.5f, 0.0f);
             float steeringRightAngle;
-            if (rb.angularVelocity > 0)
+            if (rotation > 0)
             {
                 steeringRightAngle = -90;
             }
@@ -53,19 +66,24 @@ namespace Jam
             {
                 steeringRightAngle = 90;
             }
+            
 
-            Vector2 rightAngleFromForward = Quaternion.AngleAxis(steeringRightAngle, Vector3.forward) * forward;
-            Debug.DrawLine((Vector3)rb.position, (Vector3)rb.GetRelativePoint(rightAngleFromForward), Color.green);
+            Vector3 rightAngleFromForward = Quaternion.AngleAxis(steeringRightAngle, Vector3.forward) * forward;
+            //Debug.DrawLine(transform.position, rightAngleFromForward, Color.green);
 
-            float driftForce = Vector2.Dot(rb.velocity, rb.GetRelativeVector(rightAngleFromForward.normalized));
+            float driftForce = Vector3.Dot(velocity, transform.right);
+            Vector3 relativeForce = (rightAngleFromForward.normalized * -1.0f) * (driftForce * 10.0f);
 
-            Vector2 relativeForce = (rightAngleFromForward.normalized * -1.0f) * (driftForce * 10.0f);
+            velocity += relativeForce; 
 
+            
+            controller.Move(velocity);
+            velocity = Vector3.zero; 
+        }
 
-            Debug.DrawLine((Vector3)rb.position, (Vector3)rb.GetRelativePoint(relativeForce), Color.red);
+        private void OnCollisionEnter(Collision collision)
+        {
 
-            //rb.AddForce(rb.GetRelativeVector(relativeForce));
-            rb.velocity += rb.GetRelativeVector(relativeForce) * Time.fixedDeltaTime;
         }
     }
 }
