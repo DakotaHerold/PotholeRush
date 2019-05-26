@@ -12,7 +12,11 @@ namespace Jam
         public float minSize;
 
         public float counterDisplayTime;
-        private float timer = 0.0f; 
+        private float timer = 0.0f;
+
+        public AudioSource countdownAudioSource;
+        public AudioClip countDownSound;
+        public AudioClip goSound; 
 
         // Start is called before the first frame update
         void Awake()
@@ -40,7 +44,9 @@ namespace Jam
             text.gameObject.SetActive(true);
             text.text = "3";
 
-            while(timer < counterDisplayTime)
+            countdownAudioSource.PlayOneShot(countDownSound);
+
+            while (timer < counterDisplayTime)
             {
                 text.fontSize = Mathf.Lerp(maxSize, minSize, timer);
                 timer += Time.deltaTime;
@@ -49,6 +55,8 @@ namespace Jam
 
             timer = 0.0f;
             text.text = "2";
+
+            countdownAudioSource.PlayOneShot(countDownSound);
 
             while (timer < counterDisplayTime)
             {
@@ -60,6 +68,8 @@ namespace Jam
             timer = 0.0f;
             text.text = "1";
 
+            countdownAudioSource.PlayOneShot(countDownSound);
+
             while (timer < counterDisplayTime)
             {
                 text.fontSize = Mathf.Lerp(maxSize, minSize, timer);
@@ -69,6 +79,8 @@ namespace Jam
 
             timer = 0.0f;
             text.text = "GO!";
+
+            countdownAudioSource.PlayOneShot(goSound);
 
             Debug.Log("START RACING!");
             GameManager.Instance.StartGame(); 
