@@ -99,8 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 10
   steering: 100
-  stationaryTurnSpeed: 1.5
-  turnControl: 6
+  stationaryTurnSpeed: 6
+  turnControl: 6.5
+  stunDuration: 3
   baseBounceForce: 2
   bounceTime: 0.25
   NumCheckPoints: 8

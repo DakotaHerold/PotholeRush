@@ -11,6 +11,8 @@ namespace Jam
         public float stationaryTurnSpeed;
         [Space(10)]
         public float turnControl;
+        [Space(5)]
+        public float stunDuration;
 
         private string carName;
         public string CarName { get => carName; set => carName = value; }
@@ -70,7 +72,14 @@ namespace Jam
         public AudioClip topSpeedDecellerate; 
         public AudioClip finishLineSound;
         public AudioClip getPowerupSound;
-        public AudioClip usePowerupSound; 
+        public AudioClip usePowerupSound;
+
+        private bool isStunned; 
+
+        private float stunTimer;
+
+        private float flashDuration = 0.25f; 
+        private float flashTimer;
 
         protected override void Awake()
         {
@@ -124,6 +133,13 @@ namespace Jam
             UpdateCarMovement();
         }
 
+        public void StunCar()
+        {
+            stunTimer = 0.0f;
+            flashTimer = 0.0f;
+            isStunned = true; 
+        }
+
         private void UpdateCarMovement()
         {
           
@@ -169,6 +185,40 @@ namespace Jam
                     //Debug.Log("Top reverse");
 
                 }
+            }
+
+            if(isStunned)
+            {
+                stunTimer += Time.fixedDeltaTime;
+                flashTimer += Time.fixedDeltaTime; 
+
+                if(flashTimer >= flashDuration)
+                {
+                    if(spriteRend.color.a > 0.2f)
+                    {
+                        Color newColor = spriteRend.color;
+                        newColor.a = 0.0f;
+                        spriteRend.color = newColor;
+                    }
+                    else
+                    {
+                        Color newColor = spriteRend.color;
+                        newColor.a = 255.0f;
+                        spriteRend.color = newColor;
+                    }
+                }
+
+                if(stunTimer >= stunDuration)
+                {
+                    isStunned = false;
+                    stunTimer = 0.0f;
+                    flashTimer = 0.0f; 
+                    Color newColor = spriteRend.color;
+                    newColor.a = 255.0f;
+                    spriteRend.color = newColor;
+                }
+
+                return; 
             }
 
 
@@ -316,7 +366,8 @@ namespace Jam
             if (powerupCount <= 0)
                 powerupCount = 0;
 
-            GameManager.Instance.PowerupRemoved(this); 
+            GameManager.Instance.PowerupRemoved(this);
+            GameManager.Instance.StunCars(this); 
         }
 
         public void AddCheckpoint(Checkpoint newCheckpoint)

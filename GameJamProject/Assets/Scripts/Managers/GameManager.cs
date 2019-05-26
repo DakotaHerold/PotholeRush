@@ -132,7 +132,13 @@ namespace Jam
 
         public void StunCars(CarController immuneCar)
         {
-
+            foreach(CarController car in cars)
+            {
+                if(car != immuneCar)
+                {
+                    car.StunCar(); 
+                }
+            }
         }
 
 
