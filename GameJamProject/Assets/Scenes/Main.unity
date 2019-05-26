@@ -7525,6 +7525,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 707985086955710220, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: playerSelect
+      value: 
+      objectReference: {fileID: 488602915}
+    - target: {fileID: 707985086955683136, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: pauseGroup
+      value: 
+      objectReference: {fileID: 76021802}
+    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: changeMusicOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: sceneToStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: fadeGroup
+      value: 
+      objectReference: {fileID: 488602918}
     - target: {fileID: 707985086980354730, guid: d0e31e632217a3f4285ded9e30e95d14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7938,26 +7963,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: changeMusicOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: sceneToStart
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: fadeGroup
-      value: 
-      objectReference: {fileID: 488602918}
-    - target: {fileID: 707985086955683136, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: pauseGroup
-      value: 
-      objectReference: {fileID: 76021802}
     - target: {fileID: 707985086960953282, guid: d0e31e632217a3f4285ded9e30e95d14,
         type: 3}
       propertyPath: m_audioClip
@@ -7973,11 +7978,6 @@ PrefabInstance:
       propertyPath: mainMusic
       value: 
       objectReference: {fileID: 8300000, guid: e748a24c7ef3df04f9ff0d4425f7a1c4, type: 3}
-    - target: {fileID: 707985086955710220, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: playerSelect
-      value: 
-      objectReference: {fileID: 488602915}
     - target: {fileID: 707985086966429996, guid: d0e31e632217a3f4285ded9e30e95d14,
         type: 3}
       propertyPath: m_IsActive
@@ -8571,6 +8571,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 707985086955710516, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 597599507286572324, guid: d0e31e632217a3f4285ded9e30e95d14, type: 3}
