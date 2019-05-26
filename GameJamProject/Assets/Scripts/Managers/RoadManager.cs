@@ -94,9 +94,33 @@ namespace Jam
                 //if (!spawnedRoad)
                 //    return;
 
-                // Spawn powerup if there's a broken road 
-                Tile randCurve = PowerupRoads[Random.Range(0, PowerupRoads.Length)];
-                randCurve.SpawnPowerup();
+                // Order tiles from nearest players to furthest and then spawn at nearest power tile
+
+                float nearestDist = float.MaxValue;
+                Tile nearestPowerTile = PowerupRoads[0];
+
+
+                for (int iCar = 0; iCar < GameManager.Instance.cars.Count; ++iCar)
+                {
+                    for (int iTile = 0; iTile < PowerupRoads.Length; ++iTile)
+                    {
+                    
+                        Vector3 target = GameManager.Instance.cars[iCar].transform.position + (GameManager.Instance.cars[iCar].transform.forward * 2.0f);
+                        float dist = Vector3.Distance(PowerupRoads[iTile].transform.position, target);
+
+                        // Check nearest tile to any car 
+                        if(dist < nearestDist)
+                        {
+                            nearestDist = dist;
+                            nearestPowerTile = PowerupRoads[iTile]; 
+                        }
+                    }
+                }
+
+                nearestPowerTile.SpawnPowerup();
+
+                //Tile randCurve = PowerupRoads[Random.Range(0, PowerupRoads.Length)];
+                //randCurve.SpawnPowerup();
             }
         }
 

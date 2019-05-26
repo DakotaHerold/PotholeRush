@@ -2390,7 +2390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741ede57c4ecaad48b996bef93e9825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 108201867}
+  cars:
+  - {fileID: 108201867}
   roadManager: {fileID: 1054207940}
 --- !u!4 &1054207939
 Transform:

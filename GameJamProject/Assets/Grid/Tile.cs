@@ -24,7 +24,11 @@ namespace Jam
         private Sprite defaultSprite; 
         private bool isBroken; 
         public bool IsBroken { get { return isBroken; } }
+
         
+
+        private float carDist;
+        public float CarDist { get => carDist; set => carDist = value; }
 
         private SpriteRenderer spriteRenderer;
 

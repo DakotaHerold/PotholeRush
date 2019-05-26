@@ -18,7 +18,7 @@ namespace Jam
 
 
 
-        public CarController car;
+        public List<CarController> cars;
         public RoadManager roadManager; 
 
 
@@ -41,7 +41,9 @@ namespace Jam
             Debug.Log("Game Started");
             currentState = GAME_STATE.RUNNING;
             // TODO, Fill me in based on the game!
-            car.EnableCar();
+
+            foreach(CarController car in cars)
+                car.EnableCar();
             roadManager.Activate();
 
         }
