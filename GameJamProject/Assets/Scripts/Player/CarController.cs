@@ -51,7 +51,16 @@ namespace Jam
         private int powerupCount;
         public int PowerupCount { get { return powerupCount; } }
 
-        
+        private int playerID;
+        public int PlayerID { get => playerID; set => playerID = value; }
+
+        private InputHandler controls;
+
+        protected override void Awake()
+        {
+            base.Awake(); 
+            controls = GetComponent<InputHandler>(); 
+        }
 
         protected override void Start()
         {
@@ -69,6 +78,9 @@ namespace Jam
         public void EnableCar()
         {
             // TODO: Update if there's a countdown
+
+            controls.EnableInput(playerID); 
+
             StartLap();
         }
 
@@ -92,7 +104,7 @@ namespace Jam
         {
           
 
-            Vector2 speed = transform.up * (InputHandler.Instance.VerticalAxis * acceleration);
+            Vector2 speed = transform.up * (controls.VerticalAxis * acceleration);
             speed *= Time.fixedDeltaTime;
             Vector3 newSpeed = new Vector3(speed.x, speed.y, 0.0f);
             //rb.AddForce(speed);
@@ -106,7 +118,7 @@ namespace Jam
             
 
 
-            rotation = -InputHandler.Instance.HorizontalAxis;
+            rotation = -controls.HorizontalAxis;
             if (velocity.magnitude > 0)
                 rotation *= steering * (velocity.magnitude / turnControl);
             else
@@ -168,8 +180,7 @@ namespace Jam
 
         private void AbilityUpdate()
         {
-            // TODO: Update key 
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(controls.PowerupDown)
             {
                 if(powerupCount > 0)
                 {
@@ -243,7 +254,7 @@ namespace Jam
         {
 
             // If car is moving in reverse, cannot add checkpoint
-            if (InputHandler.Instance.VerticalAxis < 0)
+            if (controls.VerticalAxis < 0)
                 return; 
 
             if (!newCheckpoint.isFinishLine)

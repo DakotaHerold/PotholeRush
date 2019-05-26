@@ -14,8 +14,11 @@ namespace Jam
         CarController car; 
         public CarController Car { get { return car; } }
 
+        List<GameObject> activeIcons; 
+
         private void Awake()
         {
+            activeIcons = new List<GameObject>(); 
             for(int i = 0; i < powerupIcons.Length; ++i)
             {
                 powerupIcons[i].gameObject.SetActive(false); 
@@ -38,19 +41,20 @@ namespace Jam
 
         public void AddPowerup()
         {
-            int index = car.PowerupCount-1;
+            int index = car.PowerupCount - 1;
 
             if (index < powerupIcons.Length)
-                powerupIcons[index].SetActive(true); 
+            {
+                powerupIcons[index].SetActive(true);
+                activeIcons.Add(powerupIcons[index]); 
+            }
         }
 
         public void RemovePowerup()
         {
-            for(int iIcon = 0; iIcon < powerupIcons.Length; ++iIcon)
-            {
-                if (iIcon > car.PowerupCount)
-                    powerupIcons[iIcon].SetActive(false); 
-            }
+            GameObject icon = activeIcons[0];
+            icon.SetActive(false);
+            activeIcons.Remove(icon); 
         }
     }
 }

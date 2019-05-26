@@ -16,20 +16,25 @@ namespace Jam
         private GAME_STATE currentState; 
         public GAME_STATE CurrentState { get { return currentState; } }
 
-
-
+        public GameObject carPrefab;
+        public Transform[] carSpawns; 
+        [HideInInspector]
         public List<CarController> cars;
         public List<Color> carColors; 
         public RoadManager roadManager;
         public UIManager UIManager; 
 
-
+        [HideInInspector]
         public float bestTime;
+
+        int numberOfCars; 
 
         // Start is called before the first frame update
         void Start()
         {
             currentState = GAME_STATE.MAIN_MENU;
+            // Temp
+            SetNumCars(2); 
             StartGame(); 
         }
 
@@ -37,6 +42,20 @@ namespace Jam
         void Update()
         {
 
+        }
+
+        public void SetNumCars(int numCars)
+        {
+            numberOfCars = numCars;
+            cars = new List<CarController>(); 
+
+            for(int i = 0; i < numberOfCars; ++i)
+            {
+                GameObject newCar = Instantiate(carPrefab);
+                newCar.transform.position = carSpawns[i].position;
+                newCar.transform.rotation = carSpawns[i].rotation;
+                cars.Add(newCar.GetComponent<CarController>()); 
+            }
         }
 
         public void StartGame()
@@ -53,8 +72,10 @@ namespace Jam
                 cars[iCar].CarName = "Player " + (playerIndex).ToString();
 
                 if (iCar < carColors.Count)
-                    cars[iCar].CarColor = carColors[iCar]; 
+                    cars[iCar].CarColor = carColors[iCar];
 
+                // For Rewired input 
+                cars[iCar].PlayerID = iCar;
                 cars[iCar].EnableCar();
             }
 
