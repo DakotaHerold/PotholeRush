@@ -68,8 +68,10 @@ public class ShowPanels : MonoBehaviour {
 	//Call this function to activate and display the Pause panel during game play
 	public void ShowPausePanel()
 	{
+        menuPanel.SetActive(false); 
 		pausePanel.SetActive (true);
 		optionsTint.SetActive(true);
+        playerSelect.SetActive(false);
         SetSelection(pausePanel);
     }
 
@@ -78,6 +80,7 @@ public class ShowPanels : MonoBehaviour {
 	{
 		pausePanel.SetActive (false);
 		optionsTint.SetActive(false);
+        menuPanel.SetActive(false); 
 	}
 
     //Call this function to activate and display the Credits panel during game play

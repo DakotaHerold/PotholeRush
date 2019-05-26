@@ -102,12 +102,22 @@ namespace Jam
 
         public void PauseGame(CarController car)
         {
-            pauseManager.PauseGame(); 
+            if(currentState == GAME_STATE.RUNNING)
+            {
+                currentState = GAME_STATE.PAUSED;
+                pauseManager.PauseGame();
+            }
+            else if(currentState == GAME_STATE.PAUSED)
+            {
+                UnpauseGame(); 
+            }
+          
         }
 
         public void UnpauseGame()
         {
-            pauseManager.UnpauseGame(); 
+            pauseManager.UnpauseGame();
+            currentState = GAME_STATE.RUNNING;
         }
 
         public void RecordTime(float time, CarController car)
