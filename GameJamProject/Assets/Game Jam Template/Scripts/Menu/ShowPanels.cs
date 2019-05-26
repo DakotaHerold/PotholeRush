@@ -9,6 +9,7 @@ public class ShowPanels : MonoBehaviour {
 	public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
 	public GameObject pausePanel;                           //Store a reference to the Game Object PausePanel 
     public GameObject creditsPanel;                           //Store a reference to the Game Object CreditsPanel 
+    public GameObject playerSelect; 
 
     private GameObject activePanel;                         
     private MenuObject activePanelMenuObject;
@@ -77,7 +78,6 @@ public class ShowPanels : MonoBehaviour {
 	{
 		pausePanel.SetActive (false);
 		optionsTint.SetActive(false);
-
 	}
 
     //Call this function to activate and display the Credits panel during game play
@@ -94,5 +94,20 @@ public class ShowPanels : MonoBehaviour {
         creditsPanel.SetActive(false);
         optionsTint.SetActive(false);
         menuPanel.SetActive(true);
+    }
+
+    public void ShowPlayerSelect()
+    {
+        playerSelect.SetActive(true);
+        optionsTint.SetActive(true);
+        menuPanel.SetActive(false);
+        SetSelection(playerSelect);
+    }
+
+    public void HidePlayerSelect()
+    {
+        menuPanel.SetActive(true);
+        playerSelect.SetActive(false);
+        optionsTint.SetActive(false);
     }
 }

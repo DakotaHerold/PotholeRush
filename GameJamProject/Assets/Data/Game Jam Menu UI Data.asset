@@ -27,12 +27,12 @@ MonoBehaviour:
     m_DisabledColor: {r: 0.56114835, g: 0.6628893, b: 0.71323526, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
-  titleFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  titleFont: {fileID: 11400000, guid: a2262de472f5a224cadb69ee1e6c956a, type: 2}
   titleTextColor: {r: 0, g: 0, b: 0, a: 1}
   autoSizeTitleFont: 1
   defaultTitleFontSize: 36
   defaultFontStyles: 0
-  font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  font: {fileID: 11400000, guid: a2262de472f5a224cadb69ee1e6c956a, type: 2}
   textColor: {r: 0, g: 0, b: 0, a: 1}
   autoSizeFont: 1
   defaultFontSize: 36

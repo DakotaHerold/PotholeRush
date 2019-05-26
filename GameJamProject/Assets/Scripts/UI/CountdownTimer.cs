@@ -17,7 +17,7 @@ namespace Jam
         // Start is called before the first frame update
         void Awake()
         {
-            if(text.gameObject.activeInHierarchy)
+            if (text.gameObject.activeInHierarchy)
                 text.gameObject.SetActive(false);
             timer = 0.0f;
         }
