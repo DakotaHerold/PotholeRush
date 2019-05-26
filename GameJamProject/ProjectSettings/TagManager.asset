@@ -49,6 +49,9 @@ TagManager:
   - name: Collider
     uniqueID: 4070592273
     locked: 0
+  - name: FinishLine
+    uniqueID: 857967121
+    locked: 0
   - name: Powerup
     uniqueID: 849397255
     locked: 0
