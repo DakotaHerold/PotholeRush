@@ -413,7 +413,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44139646}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: -3, y: -2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1142772140}
@@ -2700,7 +2700,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658780584}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: -2, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1142772140}
@@ -2958,7 +2958,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771628301}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1142772140}
@@ -3985,7 +3985,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954501875}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: -1, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1142772140}
@@ -5698,31 +5698,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 707985086955710220, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: playerSelect
-      value: 
-      objectReference: {fileID: 488602915}
-    - target: {fileID: 707985086955683136, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: pauseGroup
-      value: 
-      objectReference: {fileID: 76021802}
-    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: changeMusicOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: sceneToStart
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: fadeGroup
-      value: 
-      objectReference: {fileID: 488602918}
     - target: {fileID: 707985086980354730, guid: d0e31e632217a3f4285ded9e30e95d14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6136,6 +6111,26 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: changeMusicOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: sceneToStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: fadeGroup
+      value: 
+      objectReference: {fileID: 488602918}
+    - target: {fileID: 707985086955683136, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: pauseGroup
+      value: 
+      objectReference: {fileID: 76021802}
     - target: {fileID: 707985086960953282, guid: d0e31e632217a3f4285ded9e30e95d14,
         type: 3}
       propertyPath: m_audioClip
@@ -6151,6 +6146,11 @@ PrefabInstance:
       propertyPath: mainMusic
       value: 
       objectReference: {fileID: 8300000, guid: e748a24c7ef3df04f9ff0d4425f7a1c4, type: 3}
+    - target: {fileID: 707985086955710220, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: playerSelect
+      value: 
+      objectReference: {fileID: 488602915}
     - target: {fileID: 707985086966429996, guid: d0e31e632217a3f4285ded9e30e95d14,
         type: 3}
       propertyPath: m_IsActive
