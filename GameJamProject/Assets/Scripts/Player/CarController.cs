@@ -58,7 +58,17 @@ namespace Jam
 
         private SpriteRenderer spriteRend;
 
-        public Sprite[] carPallettes; 
+        public Sprite[] carPallettes;
+
+        [Header("Audio")]
+        public AudioSource audioSource; 
+        public AudioClip accelerateSound;
+        public AudioClip deccelerateSound;
+        public AudioClip idleSound;
+        public AudioClip topSpeedSound;
+        public AudioClip finishLineSound;
+        public AudioClip getPowerupSound;
+        public AudioClip usePowerupSound; 
 
         protected override void Awake()
         {
