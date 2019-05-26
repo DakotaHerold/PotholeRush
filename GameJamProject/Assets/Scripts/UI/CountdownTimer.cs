@@ -15,9 +15,10 @@ namespace Jam
         private float timer = 0.0f; 
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-            text.gameObject.SetActive(false);
+            if(text.gameObject.activeInHierarchy)
+                text.gameObject.SetActive(false);
             timer = 0.0f;
         }
 
@@ -36,6 +37,7 @@ namespace Jam
 
         IEnumerator CountdownRoutine()
         {
+            text.gameObject.SetActive(true);
             text.text = "3";
 
             while(timer < counterDisplayTime)
