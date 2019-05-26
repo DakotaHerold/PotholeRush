@@ -111,13 +111,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 50c70c17484fcd648ab3a9f61ffd7a68, type: 3}
   fxAudioSource: {fileID: 5397529603570900251}
   finishLineSource: {fileID: 4008012517563728132}
-  accelerateSound: {fileID: 8300000, guid: b537d9596ec1a0145a8a45513186f85f, type: 3}
-  deccelerateSound: {fileID: 8300000, guid: 5a88e6844adc3734ebed36007f0d4c10, type: 3}
-  idleSound: {fileID: 8300000, guid: 3eff6c0555c29594daf29ba7844aa72c, type: 3}
-  topSpeedSound: {fileID: 8300000, guid: faabc224cd5dfa949899b601d7adb9c5, type: 3}
-  finishLineSound: {fileID: 8300000, guid: ed64668f8f835c4499ca9011bba3bf5c, type: 3}
-  getPowerupSound: {fileID: 8300000, guid: c25f68c1f6e639346a91c1dcb10a63a5, type: 3}
-  usePowerupSound: {fileID: 8300000, guid: 0e0f0d70f663cfb44a78f1dd9a102f8f, type: 3}
+  accelerateSound: {fileID: 8300000, guid: eced896311992b14badc9123e6412b45, type: 3}
+  deccelerateSound: {fileID: 8300000, guid: 65e55e725080ec240befe1067fbbc9e9, type: 3}
+  idleSound: {fileID: 8300000, guid: 116c496391cb4d549b86761f551b2297, type: 3}
+  topSpeedSound: {fileID: 8300000, guid: 60a045a7efc778c43930ad31f7391007, type: 3}
+  finishLineSound: {fileID: 8300000, guid: 6eeaedc02d26f6d4096f522a00fab0ac, type: 3}
+  getPowerupSound: {fileID: 8300000, guid: 8e5f70eebebdf19479bec0ef4efe0265, type: 3}
+  usePowerupSound: {fileID: 8300000, guid: d39795b3de279404a8c073fe2ecd703a, type: 3}
 --- !u!82 &5397529603570900251
 AudioSource:
   m_ObjectHideFlags: 0
@@ -226,7 +226,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: ed64668f8f835c4499ca9011bba3bf5c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6eeaedc02d26f6d4096f522a00fab0ac, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
