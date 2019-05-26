@@ -9,6 +9,8 @@ namespace Jam
         public enum GAME_STATE
         {
             MAIN_MENU, 
+            COUNTING_DOWN,
+            PAUSED,
             RUNNING,
             COMPLETE
         }
@@ -22,7 +24,9 @@ namespace Jam
         public List<CarController> cars;
         public List<Color> carColors; 
         public RoadManager roadManager;
-        public UIManager UIManager; 
+        public UIManager UIManager;
+        public CountdownTimer countdownManager;
+        public Pause pauseManager;
 
         [HideInInspector]
         public float bestTime;
@@ -33,9 +37,7 @@ namespace Jam
         void Start()
         {
             currentState = GAME_STATE.MAIN_MENU;
-            // Temp
-            SetNumCars(2); 
-            StartGame(); 
+            
         }
 
         // Update is called once per frame
@@ -43,6 +45,17 @@ namespace Jam
         {
 
         }
+
+        public void SetupGame(int numPlayers)
+        {
+            currentState = GAME_STATE.COUNTING_DOWN; 
+            SetNumCars(numPlayers);
+
+            if (!countdownManager.gameObject.activeInHierarchy)
+                countdownManager.gameObject.SetActive(true); 
+            countdownManager.StartCountdownTimer(); 
+        }
+
 
         public void SetNumCars(int numCars)
         {
@@ -85,6 +98,16 @@ namespace Jam
 
             roadManager.Activate();
 
+        }
+
+        public void PauseGame(CarController car)
+        {
+            pauseManager.PauseGame(); 
+        }
+
+        public void UnpauseGame()
+        {
+            pauseManager.UnpauseGame(); 
         }
 
         public void RecordTime(float time, CarController car)

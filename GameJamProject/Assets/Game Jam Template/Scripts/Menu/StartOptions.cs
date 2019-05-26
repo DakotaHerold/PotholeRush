@@ -24,6 +24,11 @@ public class StartOptions : MonoBehaviour
     private ShowPanels showPanels;                                      //Reference to ShowPanels script on UI GameObject, to show and hide panels
     private CanvasGroup menuCanvasGroup;
 
+    public CanvasGroup fadeGroup; 
+
+    private int NUM_PLAYERS; 
+
+
     void Awake()
     {
         //Get a reference to ShowPanels attached to UI object
@@ -38,8 +43,9 @@ public class StartOptions : MonoBehaviour
         fadeImage.color = menuSettingsData.sceneChangeFadeColor;
     }
 
-    public void StartButtonClicked()
+    public void StartButtonClicked(int numPlayers)
     {
+        NUM_PLAYERS = numPlayers; 
         //If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic
         //To change fade time, change length of animation "FadeToColor"
         if (menuSettingsData.musicLoopToChangeTo != null)
@@ -117,6 +123,7 @@ public class StartOptions : MonoBehaviour
         }
 
         StartCoroutine(FadeCanvasGroupAlpha(1f, 0f, menuCanvasGroup));
+        //StartCoroutine(FadeCanvasGroupAlpha(1f, 0f, fadeGroup));
     }
 
     public IEnumerator FadeCanvasGroupAlpha(float startAlpha, float endAlpha, CanvasGroup canvasGroupToFadeAlpha)
@@ -135,7 +142,8 @@ public class StartOptions : MonoBehaviour
 
         HideDelayed();
         Debug.Log("Coroutine done. Game started in same scene! Put your game starting stuff here.");
-        Jam.GameManager.Instance.StartGame();
+        Jam.GameManager.Instance.SetupGame(NUM_PLAYERS); 
+        //Jam.GameManager.Instance.StartGame();
     }
 
     public void PlayNewMusic()
