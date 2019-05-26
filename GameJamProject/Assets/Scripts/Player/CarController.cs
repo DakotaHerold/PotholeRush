@@ -56,10 +56,15 @@ namespace Jam
 
         private InputHandler controls;
 
+        private SpriteRenderer spriteRend;
+
+        public Sprite[] carPallettes; 
+
         protected override void Awake()
         {
             base.Awake(); 
-            controls = GetComponent<InputHandler>(); 
+            controls = GetComponent<InputHandler>();
+            spriteRend = GetComponent<SpriteRenderer>(); 
         }
 
         protected override void Start()
@@ -77,9 +82,16 @@ namespace Jam
 
         public void EnableCar()
         {
-            // TODO: Update if there's a countdown
-
             controls.EnableInput(playerID); 
+
+            if(playerID < carPallettes.Length)
+            {
+                spriteRend.sprite = carPallettes[playerID];
+            }
+            else
+            {
+                spriteRend.sprite = carPallettes[0]; 
+            }
 
             StartLap();
         }
