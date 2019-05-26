@@ -19,9 +19,12 @@ namespace Jam
 
 
         public List<CarController> cars;
-        public RoadManager roadManager; 
+        public List<Color> carColors; 
+        public RoadManager roadManager;
+        public UIManager UIManager; 
 
 
+        public float bestTime;
 
         // Start is called before the first frame update
         void Start()
@@ -42,10 +45,45 @@ namespace Jam
             currentState = GAME_STATE.RUNNING;
             // TODO, Fill me in based on the game!
 
-            foreach(CarController car in cars)
-                car.EnableCar();
+
+            bestTime = float.MaxValue;
+            for(int iCar = 0; iCar < cars.Count; ++iCar)
+            {
+                int playerIndex = iCar + 1;
+                cars[iCar].CarName = "Player " + (playerIndex).ToString();
+
+                if (iCar < carColors.Count)
+                    cars[iCar].CarColor = carColors[iCar]; 
+
+                cars[iCar].EnableCar();
+            }
+
+            // Setup UI 
+            UIManager.SetupLapTimers();
+            UIManager.SetupPowerupUI(); 
+
             roadManager.Activate();
 
+        }
+
+        public void RecordTime(float time, CarController car)
+        {
+            if(time < bestTime)
+            {
+                // New best time
+                bestTime = time;
+                UIManager.SetBestTime(bestTime, car); 
+            }
+        }
+
+        public void PowerupAdded(CarController car)
+        {
+            UIManager.PowerupAdded(car); 
+        }
+
+        public void PowerupRemoved(CarController car)
+        {
+            UIManager.PowerupRemoved(car); 
         }
 
         public void ResetGame()

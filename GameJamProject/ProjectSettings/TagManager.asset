@@ -49,11 +49,11 @@ TagManager:
   - name: Collider
     uniqueID: 4070592273
     locked: 0
-  - name: Player
-    uniqueID: 1518738959
-    locked: 0
   - name: Powerup
     uniqueID: 849397255
+    locked: 0
+  - name: Player
+    uniqueID: 1518738959
     locked: 0
   - name: Debug
     uniqueID: 4009081959

@@ -10,8 +10,12 @@ namespace Jam
         {
             if(other.gameObject.GetComponent<CarController>() != null)
             {
-                other.gameObject.GetComponent<CarController>().AddPowerup();
-                Destroy(this.gameObject);
+                if(other.gameObject.GetComponent<CarController>().PowerupCount < 3)
+                {
+                    other.gameObject.GetComponent<CarController>().AddPowerup();
+                    Destroy(this.gameObject);
+                }
+                
             }
         }
     }

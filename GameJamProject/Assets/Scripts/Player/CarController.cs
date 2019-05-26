@@ -10,9 +10,13 @@ namespace Jam
         public float steering;
         public float stationaryTurnSpeed;
         [Space(10)]
-        public float turnControl; 
-  
+        public float turnControl;
 
+        private string carName;
+        public string CarName { get => carName; set => carName = value; }
+
+        private Color carColor; 
+        public Color CarColor { get => carColor; set => carColor = value; }
 
         private CharacterController controller; 
 
@@ -32,8 +36,9 @@ namespace Jam
         private float bounceTimer;
 
 
-        private float bestLapTime; 
+        private float personalBestLapTime; 
         private float lapTime;
+        public float LapTime { get { return lapTime; } }
         private int currentLap;
 
         private bool isLapActive;
@@ -43,12 +48,15 @@ namespace Jam
         [Header("Game Properties")]
         public int NumCheckPoints; 
 
-        private int powerupCount; 
+        private int powerupCount;
+        public int PowerupCount { get { return powerupCount; } }
+
+        
 
         protected override void Start()
         {
             base.Start();
-            bestLapTime = float.MaxValue; 
+            personalBestLapTime = float.MaxValue; 
             checkpoints = new List<Checkpoint>(); 
             controller = GetComponent<CharacterController>();
            // rb = GetComponent<Rigidbody>(); 
@@ -186,14 +194,15 @@ namespace Jam
         public void LapComplete()
         {
             // Set best lap time
-            if (lapTime < bestLapTime)
+            if (lapTime < personalBestLapTime)
             {
-                bestLapTime = lapTime;
-                Debug.Log("New Best Time: " + bestLapTime);
+                personalBestLapTime = lapTime;
+                Debug.Log(carName + " ,New Personal Best Time: " + personalBestLapTime);
             }
 
             Debug.Log("Lap Time: " + lapTime);
 
+            GameManager.Instance.RecordTime(lapTime, this); 
 
             // Update lap count
             currentLap++; 
@@ -208,8 +217,12 @@ namespace Jam
 
         public void AddPowerup()
         {
+            if (powerupCount >= 3)
+                return; 
+
             powerupCount++;
             Debug.Log("Powerup Count: " + powerupCount);
+            GameManager.Instance.PowerupAdded(this); 
         }
 
         private void FixRoad()
@@ -221,7 +234,9 @@ namespace Jam
         {
             powerupCount--;
             if (powerupCount <= 0)
-                powerupCount = 0; 
+                powerupCount = 0;
+
+            GameManager.Instance.PowerupRemoved(this); 
         }
 
         public void AddCheckpoint(Checkpoint newCheckpoint)
