@@ -61,7 +61,8 @@ namespace Jam
         public Sprite[] carPallettes;
 
         [Header("Audio")]
-        public AudioSource audioSource; 
+        public AudioSource fxAudioSource;
+        public AudioSource finishLineSource; 
         public AudioClip accelerateSound;
         public AudioClip deccelerateSound;
         public AudioClip idleSound;
@@ -125,8 +126,36 @@ namespace Jam
         private void UpdateCarMovement()
         {
           
-
             Vector2 speed = transform.up * (controls.VerticalAxis * acceleration);
+
+            float rawAcceleration = controls.VerticalAxis * acceleration; 
+            Debug.Log("Speed: " + rawAcceleration);
+
+            //if (!fxAudioSource.isPlaying)
+            //{
+            //    if(rawAcceleration <= 1f && rawAcceleration >= -1f)
+            //    {
+            //        // Idle
+            //        fxAudioSource.PlayOneShot(idleSound);
+            //    }
+            //    else if(rawAcceleration < 9 && rawAcceleration > 1f)
+            //    {
+            //        // accelerate
+            //        fxAudioSource.PlayOneShot(accelerateSound);
+            //    }
+            //    else if(rawAcceleration > 9.1f)
+            //    {
+            //        // top speed; 
+            //        fxAudioSource.PlayOneShot(topSpeedSound);
+            //    }
+            //    else if(rawAcceleration < -1f)
+            //    {
+            //        // decellerate 
+            //        fxAudioSource.PlayOneShot(deccelerateSound);
+            //    }
+            //}
+
+
             speed *= Time.fixedDeltaTime;
             Vector3 newSpeed = new Vector3(speed.x, speed.y, 0.0f);
             //rb.AddForce(speed);
@@ -251,8 +280,9 @@ namespace Jam
         public void AddPowerup()
         {
             if (powerupCount >= 3)
-                return; 
+                return;
 
+            fxAudioSource.PlayOneShot(getPowerupSound); 
             powerupCount++;
             Debug.Log("Powerup Count: " + powerupCount);
             GameManager.Instance.PowerupAdded(this); 
@@ -260,7 +290,8 @@ namespace Jam
 
         private void FixRoad()
         {
-            GameManager.Instance.roadManager.FixRoad(this); 
+            GameManager.Instance.roadManager.FixRoad(this);
+            fxAudioSource.PlayOneShot(usePowerupSound); 
         }
 
         public void DecrementPowerupCount()
@@ -291,6 +322,7 @@ namespace Jam
 
             if(checkpoints.Count >= NumCheckPoints && newCheckpoint.isFinishLine)
             {
+                finishLineSource.PlayOneShot(finishLineSound); 
                 LapComplete(); 
             }
         }
