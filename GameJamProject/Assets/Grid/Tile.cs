@@ -84,7 +84,11 @@ namespace Jam
             Vector3 pos = powerupSpawns[Random.Range(0, powerupSpawns.Length)].position;
 
             GameObject newPowerup = Instantiate(powerupPrefab);
-            newPowerup.transform.position = pos; 
+            
+            newPowerup.transform.position = pos;
+            Powerup powerupComp = newPowerup.GetComponent<Powerup>();
+            powerupComp._startPosition = pos;
+            powerupComp.isActive = true; 
         }
 
         private void Update()
