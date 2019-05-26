@@ -79,6 +79,9 @@ namespace Jam
             powerupDown = player.GetButtonDown(RewiredConsts.Action.Powerup);
 
             pauseDown = player.GetButtonDown(RewiredConsts.Action.Pause);
+
+            if (pauseDown)
+                Debug.Log("Pause from " + controller.CarName); 
         }
     }
 }
