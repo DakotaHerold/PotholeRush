@@ -102,6 +102,11 @@ MonoBehaviour:
   baseBounceForce: 2
   bounceTime: 0.25
   NumCheckPoints: 8
+  carPallettes:
+  - {fileID: 21300000, guid: 0f89fe7ee5c090e48a9ffe6301bf6406, type: 3}
+  - {fileID: 21300000, guid: 50c70c17484fcd648ab3a9f61ffd7a68, type: 3}
+  - {fileID: 21300000, guid: 50c70c17484fcd648ab3a9f61ffd7a68, type: 3}
+  - {fileID: 21300000, guid: 50c70c17484fcd648ab3a9f61ffd7a68, type: 3}
 --- !u!143 &4324521315550313748
 CharacterController:
   m_ObjectHideFlags: 0
