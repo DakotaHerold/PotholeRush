@@ -1741,6 +1741,12 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2018525448280447293, guid: 45cf42c80a485f0478ccd452c0e0ad2d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 504f34815c2bedc4a9243c8ed1a84bb2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45cf42c80a485f0478ccd452c0e0ad2d, type: 3}
 --- !u!4 &466514177 stripped
@@ -3531,6 +3537,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3339790946137058753, guid: cb48312eab6f6194e973410b2c12a59a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe8958fc2c635024790873782d72d452,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb48312eab6f6194e973410b2c12a59a, type: 3}
 --- !u!4 &893396944 stripped
@@ -4761,6 +4773,12 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2018525448280447293, guid: 45cf42c80a485f0478ccd452c0e0ad2d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 504f34815c2bedc4a9243c8ed1a84bb2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45cf42c80a485f0478ccd452c0e0ad2d, type: 3}
 --- !u!4 &1136089688 stripped
@@ -4954,6 +4972,12 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2018525448280447293, guid: 45cf42c80a485f0478ccd452c0e0ad2d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7593f667e2daea7499bfdb599e2d0369,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45cf42c80a485f0478ccd452c0e0ad2d, type: 3}
 --- !u!4 &1152292227 stripped
@@ -5519,6 +5543,12 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2018525448280447293, guid: 45cf42c80a485f0478ccd452c0e0ad2d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 504f34815c2bedc4a9243c8ed1a84bb2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45cf42c80a485f0478ccd452c0e0ad2d, type: 3}
 --- !u!4 &1358179460 stripped
@@ -5668,6 +5698,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 707985086955710220, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: playerSelect
+      value: 
+      objectReference: {fileID: 488602915}
+    - target: {fileID: 707985086955683136, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: pauseGroup
+      value: 
+      objectReference: {fileID: 76021802}
+    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: changeMusicOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: sceneToStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
+        type: 3}
+      propertyPath: fadeGroup
+      value: 
+      objectReference: {fileID: 488602918}
     - target: {fileID: 707985086980354730, guid: d0e31e632217a3f4285ded9e30e95d14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6081,26 +6136,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: changeMusicOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: sceneToStart
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 707985086955773682, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: fadeGroup
-      value: 
-      objectReference: {fileID: 488602918}
-    - target: {fileID: 707985086955683136, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: pauseGroup
-      value: 
-      objectReference: {fileID: 76021802}
     - target: {fileID: 707985086960953282, guid: d0e31e632217a3f4285ded9e30e95d14,
         type: 3}
       propertyPath: m_audioClip
@@ -6116,11 +6151,6 @@ PrefabInstance:
       propertyPath: mainMusic
       value: 
       objectReference: {fileID: 8300000, guid: e748a24c7ef3df04f9ff0d4425f7a1c4, type: 3}
-    - target: {fileID: 707985086955710220, guid: d0e31e632217a3f4285ded9e30e95d14,
-        type: 3}
-      propertyPath: playerSelect
-      value: 
-      objectReference: {fileID: 488602915}
     - target: {fileID: 707985086966429996, guid: d0e31e632217a3f4285ded9e30e95d14,
         type: 3}
       propertyPath: m_IsActive
@@ -7607,6 +7637,12 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2018525448280447293, guid: 45cf42c80a485f0478ccd452c0e0ad2d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 504f34815c2bedc4a9243c8ed1a84bb2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45cf42c80a485f0478ccd452c0e0ad2d, type: 3}
 --- !u!4 &1640022218 stripped
@@ -7945,6 +7981,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3339790946137058753, guid: cb48312eab6f6194e973410b2c12a59a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8225553ab85bade4f8ba8ab18970888f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb48312eab6f6194e973410b2c12a59a, type: 3}
 --- !u!4 &1727707910 stripped
@@ -8030,6 +8072,12 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2018525448280447293, guid: 45cf42c80a485f0478ccd452c0e0ad2d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7593f667e2daea7499bfdb599e2d0369,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45cf42c80a485f0478ccd452c0e0ad2d, type: 3}
 --- !u!4 &1779589205 stripped

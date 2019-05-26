@@ -101,7 +101,7 @@ MonoBehaviour:
   steering: 100
   stationaryTurnSpeed: 6
   turnControl: 6.5
-  stunDuration: 3
+  stunDuration: 1
   baseBounceForce: 2
   bounceTime: 0.25
   NumCheckPoints: 8
