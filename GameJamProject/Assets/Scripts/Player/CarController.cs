@@ -131,29 +131,29 @@ namespace Jam
             float rawAcceleration = controls.VerticalAxis * acceleration; 
             Debug.Log("Speed: " + rawAcceleration);
 
-            //if (!fxAudioSource.isPlaying)
-            //{
-            //    if(rawAcceleration <= 1f && rawAcceleration >= -1f)
-            //    {
-            //        // Idle
-            //        fxAudioSource.PlayOneShot(idleSound);
-            //    }
-            //    else if(rawAcceleration < 9 && rawAcceleration > 1f)
-            //    {
-            //        // accelerate
-            //        fxAudioSource.PlayOneShot(accelerateSound);
-            //    }
-            //    else if(rawAcceleration > 9.1f)
-            //    {
-            //        // top speed; 
-            //        fxAudioSource.PlayOneShot(topSpeedSound);
-            //    }
-            //    else if(rawAcceleration < -1f)
-            //    {
-            //        // decellerate 
-            //        fxAudioSource.PlayOneShot(deccelerateSound);
-            //    }
-            //}
+            if (!fxAudioSource.isPlaying)
+            {
+                //if (rawAcceleration <= 1f && rawAcceleration >= -1f)
+                //{
+                //    // Idle
+                //    fxAudioSource.PlayOneShot(idleSound);
+                //}
+                //else if (rawAcceleration < 8 && rawAcceleration > 1f)
+                //{
+                //    // accelerate
+                //    fxAudioSource.PlayOneShot(accelerateSound);
+                //}
+                //else if (rawAcceleration > 9.1f)
+                //{
+                //    // top speed; 
+                //    fxAudioSource.PlayOneShot(topSpeedSound);
+                //}
+                //else if (rawAcceleration < -1f)
+                //{
+                //    // decellerate 
+                //    fxAudioSource.PlayOneShot(deccelerateSound);
+                //}
+            }
 
 
             speed *= Time.fixedDeltaTime;
