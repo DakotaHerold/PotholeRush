@@ -16,10 +16,18 @@ namespace Jam
         private GAME_STATE currentState; 
         public GAME_STATE CurrentState { get { return currentState; } }
 
+
+
+        public CarController car;
+        public RoadManager roadManager; 
+
+
+
         // Start is called before the first frame update
         void Start()
         {
-            currentState = GAME_STATE.MAIN_MENU; 
+            currentState = GAME_STATE.MAIN_MENU;
+            StartGame(); 
         }
 
         // Update is called once per frame
@@ -33,6 +41,9 @@ namespace Jam
             Debug.Log("Game Started");
             currentState = GAME_STATE.RUNNING;
             // TODO, Fill me in based on the game!
+            car.EnableCar();
+            roadManager.Activate();
+
         }
 
         public void ResetGame()

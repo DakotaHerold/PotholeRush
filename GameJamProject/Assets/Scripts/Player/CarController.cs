@@ -43,6 +43,8 @@ namespace Jam
         [Header("Game Properties")]
         public int NumCheckPoints; 
 
+        private int powerupCount; 
+
         protected override void Start()
         {
             base.Start();
@@ -51,19 +53,30 @@ namespace Jam
             controller = GetComponent<CharacterController>();
            // rb = GetComponent<Rigidbody>(); 
             rotation = 0.0f;
+            powerupCount = 0;
 
+            
+        }
+
+        public void EnableCar()
+        {
             // TODO: Update if there's a countdown
             StartLap();
         }
 
         protected override void Update()
         {
+            if (GameManager.Instance.CurrentState != GameManager.GAME_STATE.RUNNING)
+                return; 
             base.Update();
             UpdateLap();
+            AbilityUpdate(); 
         }
 
         void FixedUpdate()
         {
+            if (GameManager.Instance.CurrentState != GameManager.GAME_STATE.RUNNING)
+                return;
             UpdateCarMovement();
         }
 
@@ -145,12 +158,29 @@ namespace Jam
             lapTime += Time.deltaTime; 
         }
 
+        private void AbilityUpdate()
+        {
+            // TODO: Update key 
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                if(powerupCount > 0)
+                {
+                    FixRoad();
+                }
+            }
+        }
+
         public void StartLap()
         {
             isLapActive = true;
             lapTime = 0.0f;
 
-            checkpoints.Clear(); 
+            if(checkpoints != null)
+                checkpoints.Clear(); 
+            else
+            {
+                checkpoints = new List<Checkpoint>();
+            }
         }
 
         public void LapComplete()
@@ -176,15 +206,39 @@ namespace Jam
             StartLap(); 
         }
 
-        public void AddCheckpoint(Checkpoint newCheckpoint, Checkpoint.Direction direction)
+        public void AddPowerup()
         {
+            powerupCount++;
+            Debug.Log("Powerup Count: " + powerupCount);
+        }
+
+        private void FixRoad()
+        {
+            GameManager.Instance.roadManager.FixRoad(this); 
+        }
+
+        public void DecrementPowerupCount()
+        {
+            powerupCount--;
+            if (powerupCount <= 0)
+                powerupCount = 0; 
+        }
+
+        public void AddCheckpoint(Checkpoint newCheckpoint)
+        {
+
+            // If car is moving in reverse, cannot add checkpoint
+            if (InputHandler.Instance.VerticalAxis < 0)
+                return; 
+
             if (!newCheckpoint.isFinishLine)
             {
                 if (checkpoints.Contains(newCheckpoint))
                     return;
             }
 
-            Debug.Log("Direction: " + direction.ToString()); 
+            
+            
             checkpoints.Add(newCheckpoint); 
 
             if(checkpoints.Count >= NumCheckPoints && newCheckpoint.isFinishLine)
