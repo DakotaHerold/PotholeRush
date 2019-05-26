@@ -67,6 +67,7 @@ namespace Jam
         public AudioClip deccelerateSound;
         public AudioClip idleSound;
         public AudioClip topSpeedSound;
+        public AudioClip topSpeedDecellerate; 
         public AudioClip finishLineSound;
         public AudioClip getPowerupSound;
         public AudioClip usePowerupSound; 
@@ -129,30 +130,45 @@ namespace Jam
             Vector2 speed = transform.up * (controls.VerticalAxis * acceleration);
 
             float rawAcceleration = controls.VerticalAxis * acceleration; 
-            Debug.Log("Speed: " + rawAcceleration);
+            //Debug.Log("Speed: " + rawAcceleration);
 
             if (!fxAudioSource.isPlaying)
             {
-                //if (rawAcceleration <= 1f && rawAcceleration >= -1f)
-                //{
-                //    // Idle
-                //    fxAudioSource.PlayOneShot(idleSound);
-                //}
-                //else if (rawAcceleration < 8 && rawAcceleration > 1f)
-                //{
-                //    // accelerate
-                //    fxAudioSource.PlayOneShot(accelerateSound);
-                //}
-                //else if (rawAcceleration > 9.1f)
-                //{
-                //    // top speed; 
-                //    fxAudioSource.PlayOneShot(topSpeedSound);
-                //}
-                //else if (rawAcceleration < -1f)
-                //{
-                //    // decellerate 
-                //    fxAudioSource.PlayOneShot(deccelerateSound);
-                //}
+                if (rawAcceleration <= 1f && rawAcceleration >= -1f)
+                {
+                    // Idle
+                    fxAudioSource.PlayOneShot(idleSound);
+                    //Debug.Log("Idle"); 
+                }
+                else if (rawAcceleration < 8 && rawAcceleration > 1f)
+                {
+                    // accelerate
+                    fxAudioSource.PlayOneShot(accelerateSound);
+                    //Debug.Log("accel");
+
+                }
+                else if (rawAcceleration > 9.1f)
+                {
+                    // top speed; 
+                    fxAudioSource.PlayOneShot(topSpeedSound);
+                    //Debug.Log("Top speed");
+
+                }
+                else if (rawAcceleration < -9f)
+                {
+                    // TOp reverse
+                    fxAudioSource.PlayOneShot(topSpeedDecellerate);
+                    //Debug.Log("Top reverse");
+
+
+                }
+                else if(rawAcceleration < -1f)
+                {
+                    // decellerate 
+                    fxAudioSource.PlayOneShot(deccelerateSound);
+                    //Debug.Log("Top reverse");
+
+                }
             }
 
 

@@ -130,6 +130,12 @@ namespace Jam
             }
         }
 
+        public void StunCars(CarController immuneCar)
+        {
+
+        }
+
+
         public void PowerupAdded(CarController car)
         {
             UIManager.PowerupAdded(car); 

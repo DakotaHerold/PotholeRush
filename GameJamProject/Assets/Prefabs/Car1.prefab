@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1518738959
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0f89fe7ee5c090e48a9ffe6301bf6406, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -115,6 +115,7 @@ MonoBehaviour:
   deccelerateSound: {fileID: 8300000, guid: 65e55e725080ec240befe1067fbbc9e9, type: 3}
   idleSound: {fileID: 8300000, guid: 116c496391cb4d549b86761f551b2297, type: 3}
   topSpeedSound: {fileID: 8300000, guid: 60a045a7efc778c43930ad31f7391007, type: 3}
+  topSpeedDecellerate: {fileID: 8300000, guid: 454e426596cb2dd4c96687055a6aff13, type: 3}
   finishLineSound: {fileID: 8300000, guid: 6eeaedc02d26f6d4096f522a00fab0ac, type: 3}
   getPowerupSound: {fileID: 8300000, guid: 8e5f70eebebdf19479bec0ef4efe0265, type: 3}
   usePowerupSound: {fileID: 8300000, guid: d39795b3de279404a8c073fe2ecd703a, type: 3}
