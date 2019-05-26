@@ -28,7 +28,9 @@ namespace Jam
 
         public void Activate()
         {
-            isActive = true; 
+            isActive = true;
+
+            BreakRoadFirst(); 
         }
 
         // Update is called once per frame
@@ -47,6 +49,58 @@ namespace Jam
                 duration = Random.Range(minSpawnDuration, maxSpawnDuration);
                 timer = 0.0f; 
                 BreakRoad(); 
+            }
+        }
+
+        void BreakRoadFirst()
+        {
+
+            // Calculate breakable roads 
+            List<Tile> unoccupiedRoads = new List<Tile>();
+
+            for (int iTile = 0; iTile < BreakableRoads.Length; ++iTile)
+            {
+                int hTile = iTile - 1;
+                int jTile = iTile + 1;
+
+                if (hTile < 0)
+                    hTile = BreakableRoads.Length - 1;
+
+                if (jTile >= BreakableRoads.Length)
+                    jTile = 0;
+
+                if (!BreakableRoads[hTile].IsBroken && !BreakableRoads[iTile].IsBroken && !BreakableRoads[iTile].IsBroken)
+                {
+                    if (!BreakableRoads[hTile].trigger.containsPlayer && !BreakableRoads[iTile].trigger.containsPlayer && !BreakableRoads[iTile].trigger.containsPlayer)
+                    {
+                        unoccupiedRoads.Add(BreakableRoads[iTile]);
+                    }
+                }
+            }
+
+
+            if (unoccupiedRoads.Count > 0)
+            {
+                // Break road. If already broken or contains player just return. Will try again in a few secnds
+                Tile randRoad = unoccupiedRoads[Random.Range(0, unoccupiedRoads.Count)];
+                randRoad.BreakRoad();
+
+                //bool spawnedRoad = false;
+
+                //if (!randRoad.IsBroken || randRoad.trigger.containsPlayer)
+                //{
+                //    randRoad.BreakRoad();
+                //    spawnedRoad = true;
+                //}
+
+                //if (!spawnedRoad)
+                //    return;
+
+                // Order tiles from nearest players to furthest and then spawn at nearest power tile
+
+
+                Tile randCurve = PowerupRoads[Random.Range(0, PowerupRoads.Length)];
+                randCurve.SpawnPowerup();
             }
         }
 
