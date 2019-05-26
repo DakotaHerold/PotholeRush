@@ -3,11 +3,13 @@ using System.Collections;
 
 public class Pause : MonoBehaviour {
 
+    public CanvasGroup pauseGroup; 
 
 	private ShowPanels showPanels;						//Reference to the ShowPanels script used to hide and show UI panels
 	private bool isPaused;								//Boolean to check if the game is paused or not
-	private StartOptions startScript;					//Reference to the StartButton script
-	
+	private StartOptions startScript;                   //Reference to the StartButton script
+    private CanvasGroup mainCanvasGroup;
+
 	//Awake is called before Start()
 	void Awake()
 	{
@@ -15,6 +17,8 @@ public class Pause : MonoBehaviour {
 		showPanels = GetComponent<ShowPanels> ();
 		//Get a component reference to StartButton attached to this object, store in startScript variable
 		startScript = GetComponent<StartOptions> ();
+
+        mainCanvasGroup = GetComponent<CanvasGroup>(); 
 	}
 
 	// Update is called once per frame
@@ -53,8 +57,12 @@ public class Pause : MonoBehaviour {
 		isPaused = true;
 		//Set time.timescale to 0, this will cause animations and physics to stop updating
 		Time.timeScale = 0;
-		//call the ShowPausePanel function of the ShowPanels script
-		showPanels.ShowPausePanel ();
+
+
+        mainCanvasGroup.alpha = 1f;
+        //pauseGroup.alpha = 1f; 
+        //call the ShowPausePanel function of the ShowPanels script
+        showPanels.ShowPausePanel ();
 	}
 
 
@@ -66,6 +74,7 @@ public class Pause : MonoBehaviour {
 		Time.timeScale = 1;
 		//call the HidePausePanel function of the ShowPanels script
 		showPanels.HidePausePanel ();
+        Jam.GameManager.Instance.UnpauseGame(); 
 	}
 
 

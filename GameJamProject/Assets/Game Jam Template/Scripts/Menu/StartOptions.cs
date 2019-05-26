@@ -108,6 +108,7 @@ public class StartOptions : MonoBehaviour
     {
         //Hide the main menu UI element after fading out menu for start game in scene
         showPanels.HideMenu();
+        showPanels.HidePlayerSelect(); 
     }
 
     public void StartGameInScene()
@@ -124,6 +125,11 @@ public class StartOptions : MonoBehaviour
 
         StartCoroutine(FadeCanvasGroupAlpha(1f, 0f, menuCanvasGroup));
         //StartCoroutine(FadeCanvasGroupAlpha(1f, 0f, fadeGroup));
+    }
+
+    public void FadeInMenuFromPause()
+    {
+        StartCoroutine(FadeCanvasGroupAlpha(0f, 1f, menuCanvasGroup)); 
     }
 
     public IEnumerator FadeCanvasGroupAlpha(float startAlpha, float endAlpha, CanvasGroup canvasGroupToFadeAlpha)

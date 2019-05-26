@@ -66,7 +66,12 @@ namespace Jam
         void Update()
         {
             if (GameManager.Instance.CurrentState != GameManager.GAME_STATE.RUNNING)
-                return;
+            {
+                if(GameManager.Instance.CurrentState != GameManager.GAME_STATE.PAUSED)
+                {
+                    return; 
+                }
+            }
 
             if (!inputActive)
                 return; 
@@ -81,7 +86,9 @@ namespace Jam
             pauseDown = player.GetButtonDown(RewiredConsts.Action.Pause);
 
             if (pauseDown)
-                Debug.Log("Pause from " + controller.CarName); 
+            {
+                GameManager.Instance.PauseGame(controller); 
+            }
         }
     }
 }
